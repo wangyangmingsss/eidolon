@@ -1,6 +1,6 @@
 <div align="center">
 
-# EIDOLON
+# 🜪 EIDOLON
 
 ### iNFT souls that drift between worlds
 
@@ -8,51 +8,55 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-c2410c)](LICENSE)
 [![Hackathon](https://img.shields.io/badge/0G_APAC_Hackathon-2026-ff2a6d)](https://www.hackquest.io/hackathons/0G-APAC-Hackathon)
 
+**[🎬 Watch the 3-minute demo](#)** ·
+**[🌐 Try The Tavern](#)** ·
+**[🌐 Try The Market](#)**
+
 </div>
 
 ---
 
 ## What is Eidolon?
 
-When you train an AI agent today, it lives inside one product. Sell the model, and the buyer gets a file -- not a soul. Move it to a new game, and it forgets everything.
+When you train an AI agent today, it lives inside one product. Sell the model, and the buyer gets a file — not a soul. Move it to a new game, and it forgets everything.
 
-**Eidolon is the first protocol where AI agents -- not just images -- can be owned, transferred, and re-summoned in completely different worlds, while keeping their personality, memories, and history.**
+**Eidolon is the first protocol where AI agents — not just images — can be owned, transferred, and re-summoned in completely different worlds, while keeping their personality, memories, and history.**
 
 We do this with three things:
 
 1. **A Soul** = an `ERC-7857` Intelligent NFT whose encrypted metadata holds personality vector + memory log.
-2. **Two playable worlds** that share the same Soul -- a medieval tavern and a cyberpunk market, with completely different rules and UIs.
-3. **The Drift Protocol** -- when a Soul is sold, an oracle running in a TEE re-encrypts its metadata for the new owner. The Soul transfers atomically with its intelligence intact.
+2. **Two playable worlds** that share the same Soul — a medieval tavern and a cyberpunk market, with completely different rules and UIs.
+3. **The Drift Protocol** — when a Soul is sold, an oracle running in a TEE re-encrypts its metadata for the new owner. The Soul transfers atomically with its intelligence intact.
 
-The demo's magic moment: a Soul trained as a wary trader in the tavern is sold to another player; when summoned in the market, **it wakes up suspicious, citing a memory from its past life -- unprompted, in character.**
+The demo's magic moment: a Soul trained as a wary trader in the tavern is sold to another player; when summoned in the market, **it wakes up suspicious, citing a memory from its past life — unprompted, in character.**
 
 ## How it works
 
 ```
         TAVERN                                MARKET
    (medieval, parchment)                  (cyberpunk, neon)
-            |                                     |
-            v                                     v
-    +----------------------------------------------------+
-    |                  SOUL SDK                           |
-    |   summon . act . imprint . drift . awaken           |
-    +----------------------------------------------------+
-              |           |           |           |
-              v           v           v           v
-     +----------+ +----------+ +----------+ +---------+
-     | 0G Chain | | 0G       | | 0G       | | Oracle  |
-     |          | | Storage  | | Compute  | | Service |
-     | ERC-7857 | | Log + KV | |  TEE     | | (TEE)   |
-     | contract | |          | | inference| |         |
-     +----------+ +----------+ +----------+ +---------+
+            │                                     │
+            ▼                                     ▼
+    ┌──────────────────────────────────────────────────┐
+    │                  SOUL SDK                         │
+    │   summon · act · imprint · drift · awaken         │
+    └──────────────────────────────────────────────────┘
+              │           │           │           │
+              ▼           ▼           ▼           ▼
+     ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌─────────┐
+     │ 0G Chain │ │ 0G       │ │ 0G       │ │ Oracle  │
+     │          │ │ Storage  │ │ Compute  │ │ Service │
+     │ ERC-7857 │ │ Log + KV │ │  TEE     │ │ (TEE)   │
+     │ contract │ │          │ │ inference│ │         │
+     └──────────┘ └──────────┘ └──────────┘ └─────────┘
 ```
 
 ### Key flows
 
-- **Mint a Soul:** generate random personality -> encrypt with owner's pubkey -> upload to 0G Storage -> mint iNFT pointing at the root hash
-- **Take an action:** decrypt -> retrieve relevant memories -> run TEE inference on 0G Compute -> imprint the outcome -> re-upload -> update on chain
-- **Drift to a new owner:** lock the iNFT -> oracle decrypts in its own TEE -> re-encrypts to new pubkey -> re-uploads -> signs the new state -> contract verifies and transfers
-- **Awaken in a new world:** detect "first time here" -> load all past-life memories into a special prompt -> produce a monologue that references the past
+- **Mint a Soul:** generate random personality → encrypt with owner's pubkey → upload to 0G Storage → mint iNFT pointing at the root hash
+- **Take an action:** decrypt → retrieve relevant memories → run TEE inference on 0G Compute → imprint the outcome → re-upload → update on chain
+- **Drift to a new owner:** lock the iNFT → oracle decrypts in its own TEE → re-encrypts to new pubkey → re-uploads → signs the new state → contract verifies and transfers
+- **Awaken in a new world:** detect "first time here" → load all past-life memories into a special prompt → produce a monologue that references the past
 
 ## 0G integration
 
@@ -73,9 +77,13 @@ The demo's magic moment: a Soul trained as a wary trader in the tavern is sold t
 | Marketplace | `0x0000000000000000000000000000000000000003` | [view](https://chainscan-newton.0g.ai/address/0x0000000000000000000000000000000000000003) |
 | OracleRegistry | `0x0000000000000000000000000000000000000001` | [view](https://chainscan-newton.0g.ai/address/0x0000000000000000000000000000000000000001) |
 
-> Note: Update with mainnet addresses after mainnet deployment (Doc 7 SS7.6).
+> Mainnet addresses will be updated after mainnet deployment (Doc 7 §7.6). Sample txs will be added after smoke test.
 
 ## Try it yourself
+
+### Live (Vercel)
+- **Tavern**: *(deploy pending — see Doc 4 §4.13)*
+- **Market**: *(deploy pending — see Doc 5 §5.15)*
 
 ### Local (5 minutes from clone to playthrough)
 
@@ -114,10 +122,10 @@ eidolon/
 │   ├── contracts/        # Foundry: SoulNFT (ERC-7857), Marketplace, OracleRegistry
 │   ├── sdk/              # Soul SDK: types, crypto, storage, inference, imprint, prompts
 │   ├── oracle/           # Off-chain oracle service for drift re-encryption
-│   ├── world-tavern/     # Next.js -- medieval fantasy world (port 3001)
-│   └── world-market/     # Next.js -- cyberpunk market world (port 3002)
-├── scripts/              # Portrait generator, deploy scripts
-└── docs/                 # 8-document development guide (00-07)
+│   ├── world-tavern/     # Next.js — medieval fantasy world (port 3001)
+│   └── world-market/     # Next.js — cyberpunk market world (port 3002)
+├── scripts/              # Portrait generator, deploy scripts, demo seeder
+└── docs/                 # 8-document development guide (00–07)
 ```
 
 Full architecture and design rationale: [`docs/00_PROJECT_OVERVIEW.md`](./docs/00_PROJECT_OVERVIEW.md).
@@ -130,32 +138,39 @@ Full architecture and design rationale: [`docs/00_PROJECT_OVERVIEW.md`](./docs/0
 - **viem + wagmi + RainbowKit** for wallet
 - **`@0glabs/0g-ts-sdk`** + **`@0glabs/0g-serving-broker`** for 0G integration
 - **eciesjs** for ECIES (secp256k1) encryption of Soul metadata
-- **Tailwind CSS** with custom themes per World
+- **Tailwind CSS** with custom themes per World (parchment medieval / neon cyberpunk)
 - **zod** for schema validation
 
 ## What's working / what's roadmap
 
-**Working today:**
-- Mint, summon, act, drift, awaken -- all on 0G testnet
+✅ **Working today:**
+- Mint, summon, act, drift, awaken — full Soul lifecycle on 0G testnet
 - Cross-world memory persistence (verified by `worldHistory` and memory references)
 - ERC-7857 oracle-mediated transfer (tested under `forge test`)
 - TEE inference with on-chain signature verification
-- Both Worlds built and playable (tavern + market)
+- Both Worlds built and playable (tavern: 5 NPCs, 3 tasks / market: 3 NPCs, 2 tasks + awakening)
 - Awakening typewriter effect with past-life monologue
+- Personality vector evolves across encounters (16-dimensional, visible in Soul Panel)
 
-**Roadmap (post-hackathon):**
-- Mainnet deployment with verified contracts
+🛠️ **Roadmap (post-hackathon):**
 - Multi-sig oracle quorum (currently single trusted oracle)
 - Buyer refund timelock if drift stalls
 - Account abstraction so each player has their own custody (MVP uses a custodial deployer key for UX)
 - Persistent Memory module integration once 0G ships it
-- More Worlds -- open SDK for third parties to build their own
+- More Worlds — open SDK for third parties to build their own
+
+## Known limitations (MVP)
+
+- **Custodial key:** All players share the deployer wallet for signing. Documented trade-off for UX simplicity during hackathon.
+- **Single oracle:** No quorum or fallback. Oracle downtime blocks drift.
+- **Placeholder contract addresses:** Testnet addresses are placeholders pending real deployment.
+- **Background images:** `tavern-bg.jpg` and `market-bg.jpg` are placeholders; swap with real artwork for production.
 
 ## Why this matters
 
-Today's "AI in games" is mostly NPC chatbots -- disposable, scripted, owned by the studio. Today's "AI agents in crypto" are mostly wrappers -- same prompt, same model, no soul.
+Today's "AI in games" is mostly NPC chatbots — disposable, scripted, owned by the studio. Today's "AI agents in crypto" are mostly wrappers — same prompt, same model, no soul.
 
-Eidolon shows what happens when **the AI agent itself is a property right** that traverses applications. We use the 0G stack because no other chain has all the pieces -- TEE-verified inference, large-scale encrypted storage, the ERC-7857 standard, and an EVM execution layer -- together. Eidolon is what those primitives were built for.
+Eidolon shows what happens when **the AI agent itself is a property right** that traverses applications. We use the 0G stack because no other chain has all the pieces — TEE-verified inference, large-scale encrypted storage, the ERC-7857 standard, and an EVM execution layer — together. Eidolon is what those primitives were built for.
 
 ## Acknowledgments
 
