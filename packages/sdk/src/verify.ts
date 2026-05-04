@@ -102,7 +102,8 @@ async function step3_storage_log() {
 
     // Download and compare
     const downloadPath = resolve(repoRoot, '.eidolon-verify-tmp-rt.json');
-    const [, downloadErr] = await indexer.download(rootHash!, downloadPath, true);
+    const dlResult = await indexer.download(rootHash!, downloadPath, true);
+    const [, downloadErr] = Array.isArray(dlResult) ? dlResult : [dlResult, null];
     if (downloadErr) throw new Error(`download failed: ${downloadErr}`);
 
     const { readFileSync, unlinkSync } = await import('fs');
@@ -220,7 +221,7 @@ async function step5_compute_discover_and_test() {
       }),
     });
     if (!resp.ok) throw new Error(`Inference HTTP ${resp.status}: ${await resp.text()}`);
-    const json = await resp.json();
+    const json: any = await resp.json();
     const content = json?.choices?.[0]?.message?.content ?? '';
     log.ok(`Sample response: ${JSON.stringify(content).slice(0, 100)}`);
 
