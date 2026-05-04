@@ -27,6 +27,7 @@ pnpm-debug.log*
 
 # Eidolon-specific
 .eidolon/
+oracle-pubkeys.json
 # verify-output.json is committed per Doc 1
 
 # Foundry contracts env
