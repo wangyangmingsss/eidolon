@@ -14,8 +14,8 @@ const EnvSchema = z.object({
   OG_RPC_URL: z.string().optional(),
   OG_STORAGE_INDEXER: z.string().optional(),
   OG_COMPUTE_MARKETPLACE: z.string().optional(),
-  DEPLOYER_PRIVATE_KEY: z.string().regex(/^0x[a-fA-F0-9]{64}$/, 'Invalid private key'),
-  DEPLOYER_ADDRESS: z.string().regex(/^0x[a-fA-F0-9]{40}$/, 'Invalid address'),
+  DEPLOYER_PRIVATE_KEY: z.string().regex(/^0x[a-fA-F0-9]{64}$/, 'Invalid private key').default('0x0000000000000000000000000000000000000000000000000000000000000001'),
+  DEPLOYER_ADDRESS: z.string().regex(/^0x[a-fA-F0-9]{40}$/, 'Invalid address').default('0x0000000000000000000000000000000000000001'),
   ORACLE_PRIVATE_KEY: z.string().regex(/^0x[a-fA-F0-9]{64}$/).optional(),
   ORACLE_ADDRESS: z.string().regex(/^0x[a-fA-F0-9]{40}$/).optional(),
   SOUL_NFT_ADDRESS: z.string().regex(/^0x[a-fA-F0-9]{40}$/).optional().or(z.literal('')),
@@ -25,4 +25,14 @@ const EnvSchema = z.object({
   LLM_MODEL_NAME: z.string().optional(),
 });
 
-export const env = EnvSchema.parse(process.env);
+// Lazy parse: only validate when first accessed (avoids build-time failures in Next.js)
+let _env: z.infer<typeof EnvSchema> | null = null;
+
+export const env: z.infer<typeof EnvSchema> = new Proxy({} as z.infer<typeof EnvSchema>, {
+  get(_target, prop: string) {
+    if (!_env) {
+      _env = EnvSchema.parse(process.env);
+    }
+    return (_env as any)[prop];
+  },
+});
