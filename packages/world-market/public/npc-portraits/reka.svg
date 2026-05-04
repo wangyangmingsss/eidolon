@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160">
+  <rect width="160" height="160" fill="#1a1a2e"/>
+  <rect x="4" y="4" width="152" height="152" fill="none" stroke="#ff2a6d" stroke-width="2"/>
+  <text x="80" y="105" font-family="monospace" font-size="80" text-anchor="middle" fill="#ff2a6d">R</text>
+</svg>
