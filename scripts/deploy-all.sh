@@ -10,6 +10,8 @@ echo "=== Deploying Eidolon contracts to $NETWORK ==="
 
 cd packages/contracts
 
+export DEPLOY_NETWORK="$NETWORK"
+
 if [ "$NETWORK" = "mainnet" ]; then
   forge script script/Deploy.s.sol --rpc-url mainnet --broadcast --legacy
   echo "=== Mainnet deploy complete ==="

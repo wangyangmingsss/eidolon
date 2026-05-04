@@ -37,6 +37,8 @@ contract Deploy is Script {
             '  "Oracle": "', vm.toString(oracleAddr), '"\n',
             "}"
         ));
-        vm.writeFile("./addresses.testnet.json", json);
+        string memory networkFile = vm.envOr("DEPLOY_NETWORK", string("testnet"));
+        string memory outFile = string(abi.encodePacked("./addresses.", networkFile, ".json"));
+        vm.writeFile(outFile, json);
     }
 }
