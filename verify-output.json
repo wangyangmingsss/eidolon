@@ -1,0 +1,14 @@
+{
+  "network": "testnet",
+  "chainId": 16602,
+  "blockNumber": 31507077,
+  "walletBalance": "0",
+  "storageRootHash": "skipped",
+  "storageRoundtripOk": false,
+  "kvRoundtripOk": false,
+  "computeProvider": null,
+  "computeModel": null,
+  "computeSampleResponse": "skipped",
+  "teeSignatureValid": false,
+  "timestamp": "2026-05-04T13:55:38.935Z"
+}

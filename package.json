@@ -1,0 +1,28 @@
+{
+  "name": "eidolon",
+  "version": "0.1.0",
+  "private": true,
+  "description": "iNFT souls that drift between worlds",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=9.0.0"
+  },
+  "scripts": {
+    "verify": "pnpm --filter @eidolon/sdk verify",
+    "build": "pnpm -r build",
+    "test": "pnpm -r test",
+    "lint": "pnpm -r lint",
+    "typecheck": "pnpm -r typecheck",
+    "deploy:testnet": "pnpm --filter @eidolon/contracts deploy:testnet",
+    "deploy:mainnet": "pnpm --filter @eidolon/contracts deploy:mainnet",
+    "dev:tavern": "pnpm --filter @eidolon/world-tavern dev",
+    "dev:market": "pnpm --filter @eidolon/world-market dev",
+    "oracle": "pnpm --filter @eidolon/oracle start"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0",
+    "tsx": "^4.7.0",
+    "@types/node": "^20.0.0"
+  }
+}

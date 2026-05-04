@@ -1,0 +1,33 @@
+node_modules/
+.pnpm-store/
+dist/
+.next/
+out/
+
+# env
+.env
+.env.local
+.env.*.local
+
+# Foundry
+cache/
+out/
+broadcast/
+
+# IDE
+.vscode/
+.idea/
+.DS_Store
+
+# logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# Eidolon-specific
+.eidolon/
+# verify-output.json is committed per Doc 1
+
+# Foundry contracts env
+packages/contracts/.env
