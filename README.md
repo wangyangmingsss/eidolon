@@ -9,7 +9,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-c2410c?style=for-the-badge)](LICENSE)
 [![Hackathon](https://img.shields.io/badge/0G_APAC_Hackathon-2026-ff2a6d?style=for-the-badge)](https://www.hackquest.io/hackathons/0G-APAC-Hackathon)
 
-**[Demo Video](https://youtu.be/PLACEHOLDER)** | **[Live Demo](https://dhe3987p.mule.page/)** | **[Live: Tavern](https://eidolon-tavern.vercel.app)** | **[Live: Market](https://eidolon-market.vercel.app)** | **[Docs](./docs/)** | **[X: @0xWangyangming](https://x.com/0xWangyangming)**
+**[Live Demo](https://dhe3987p.mule.page/)** | **[X: @0xWangyangming](https://x.com/0xWangyangming)**
 
 </div>
 
