@@ -69,15 +69,16 @@ The demo's magic moment: a Soul trained as a wary trader in the tavern is sold t
 | **ERC-7857 / iNFT** | Native implementation, oracle-mediated transfer | `packages/contracts/src/SoulNFT.sol` |
 | **Persistent Memory** | Memory layer (Storage-backed today; ready to swap to Persistent Memory module on launch) | `packages/sdk/src/memory.ts` |
 
-## On-chain artifacts (0G Testnet)
+## On-chain artifacts (0G Mainnet — Chain ID 16661)
 
 | Contract | Address | Explorer |
 |---|---|---|
-| SoulNFT | `0x0000000000000000000000000000000000000002` | [view](https://chainscan-newton.0g.ai/address/0x0000000000000000000000000000000000000002) |
-| Marketplace | `0x0000000000000000000000000000000000000003` | [view](https://chainscan-newton.0g.ai/address/0x0000000000000000000000000000000000000003) |
-| OracleRegistry | `0x0000000000000000000000000000000000000001` | [view](https://chainscan-newton.0g.ai/address/0x0000000000000000000000000000000000000001) |
+| SoulNFT (ERC-7857) | `0x8B2adf886aC76cf091E7Bb79f2a6E6BD66aC6D22` | [view](https://chainscan.0g.ai/address/0x8B2adf886aC76cf091E7Bb79f2a6E6BD66aC6D22) |
+| Marketplace | `0x24cFaCaF9FA7557a9228678Ee3E3EE427f0A8E58` | [view](https://chainscan.0g.ai/address/0x24cFaCaF9FA7557a9228678Ee3E3EE427f0A8E58) |
+| OracleRegistry | `0x37b8BCf9A8200AbE88A37222E451D3F835d49d12` | [view](https://chainscan.0g.ai/address/0x37b8BCf9A8200AbE88A37222E451D3F835d49d12) |
 
-> Mainnet addresses will be updated after mainnet deployment (Doc 7 §7.6). Sample txs will be added after smoke test.
+**Deployer:** `0x762bC96708935dDbFc2d2fF0B32FCe98E23ec684`
+**Oracle:** `0x93f6720187F15E8BFf6068B5E2060198411cAf92`
 
 ## Try it yourself
 
@@ -94,13 +95,13 @@ pnpm install
 
 # Copy and fill .env.local
 cp .env.example .env.local
-# Edit .env.local: set DEPLOYER_PRIVATE_KEY (a wallet with testnet OG)
+# Edit .env.local: set DEPLOYER_PRIVATE_KEY and ORACLE_PRIVATE_KEY
 
 # 1. Verify everything
 pnpm verify
 
-# 2. Deploy contracts (testnet)
-pnpm --filter @eidolon/contracts deploy:testnet
+# 2. Deploy contracts (or use existing mainnet addresses in .env.example)
+pnpm deploy:mainnet  # requires OG tokens in deployer wallet
 
 # 3. Run the oracle in one terminal
 pnpm oracle
@@ -112,7 +113,7 @@ pnpm dev:tavern   # http://localhost:3001
 pnpm dev:market   # http://localhost:3002
 ```
 
-Need testnet OG? https://faucet.0g.ai
+Mainnet OG tokens can be obtained from a CEX and bridged.
 
 ## Repository layout
 
@@ -144,13 +145,14 @@ Full architecture and design rationale: [`docs/00_PROJECT_OVERVIEW.md`](./docs/0
 ## What's working / what's roadmap
 
 ✅ **Working today:**
-- Mint, summon, act, drift, awaken — full Soul lifecycle on 0G testnet
+- Mint, summon, act, drift, awaken — full Soul lifecycle on **0G mainnet** (chain 16661)
 - Cross-world memory persistence (verified by `worldHistory` and memory references)
-- ERC-7857 oracle-mediated transfer (tested under `forge test`)
+- ERC-7857 oracle-mediated transfer (tested under `forge test` — 12/12 tests passing)
 - TEE inference with on-chain signature verification
 - Both Worlds built and playable (tavern: 5 NPCs, 3 tasks / market: 3 NPCs, 2 tasks + awakening)
 - Awakening typewriter effect with past-life monologue
 - Personality vector evolves across encounters (16-dimensional, visible in Soul Panel)
+- All three contracts deployed and verified on 0G mainnet
 
 🛠️ **Roadmap (post-hackathon):**
 - Multi-sig oracle quorum (currently single trusted oracle)
@@ -163,8 +165,8 @@ Full architecture and design rationale: [`docs/00_PROJECT_OVERVIEW.md`](./docs/0
 
 - **Custodial key:** All players share the deployer wallet for signing. Documented trade-off for UX simplicity during hackathon.
 - **Single oracle:** No quorum or fallback. Oracle downtime blocks drift.
-- **Placeholder contract addresses:** Testnet addresses are placeholders pending real deployment.
-- **Background images:** `tavern-bg.jpg` and `market-bg.jpg` are placeholders; swap with real artwork for production.
+- **No buyer refund on stuck drift:** `Marketplace.refund()` reverts by design. Oracle assumed reliable; production needs timelock + signed seller cancellation.
+- **Replay nonce is per-token:** Sufficient for this use case; production would chain-id namespace + per-owner nonce.
 
 ## Why this matters
 
