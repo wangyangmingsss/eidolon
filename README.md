@@ -8,10 +8,6 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-c2410c)](LICENSE)
 [![Hackathon](https://img.shields.io/badge/0G_APAC_Hackathon-2026-ff2a6d)](https://www.hackquest.io/hackathons/0G-APAC-Hackathon)
 
-**[🎬 Watch the 3-minute demo](#)** ·
-**[🌐 Try The Tavern](#)** ·
-**[🌐 Try The Market](#)**
-
 </div>
 
 ---
@@ -71,7 +67,7 @@ The demo's magic moment: a Soul trained as a wary trader in the tavern is sold t
 
 ## On-chain artifacts (0G Mainnet — Chain ID 16661)
 
-| Contract | Address | Explorer |
+| Contract | Mainnet Address | Explorer |
 |---|---|---|
 | SoulNFT (ERC-7857) | `0x8B2adf886aC76cf091E7Bb79f2a6E6BD66aC6D22` | [view](https://chainscan.0g.ai/address/0x8B2adf886aC76cf091E7Bb79f2a6E6BD66aC6D22) |
 | Marketplace | `0x24cFaCaF9FA7557a9228678Ee3E3EE427f0A8E58` | [view](https://chainscan.0g.ai/address/0x24cFaCaF9FA7557a9228678Ee3E3EE427f0A8E58) |
@@ -80,11 +76,11 @@ The demo's magic moment: a Soul trained as a wary trader in the tavern is sold t
 **Deployer:** `0x762bC96708935dDbFc2d2fF0B32FCe98E23ec684`
 **Oracle:** `0x93f6720187F15E8BFf6068B5E2060198411cAf92`
 
-## Try it yourself
+Deploy OracleRegistry tx: [`0x04c5909e...`](https://chainscan.0g.ai/tx/0x04c5909e15b2bbf5f4a1ef1434550540a3222d20462ff54915d75466f5c3fc42)
+Deploy SoulNFT tx: [`0x85f7282c...`](https://chainscan.0g.ai/tx/0x85f7282ce052661b1770ce79549fa4e906887dd9187ba21e64448d15ed9cdc35)
+Deploy Marketplace tx: [`0xa15b7188...`](https://chainscan.0g.ai/tx/0xa15b7188a0d283b646bb2ee5e96f5e96f3d3c1e63d2aeb69b90df65a4681a1e6)
 
-### Live (Vercel)
-- **Tavern**: *(deploy pending — see Doc 4 §4.13)*
-- **Market**: *(deploy pending — see Doc 5 §5.15)*
+## Try it yourself
 
 ### Local (5 minutes from clone to playthrough)
 
@@ -96,11 +92,12 @@ pnpm install
 # Copy and fill .env.local
 cp .env.example .env.local
 # Edit .env.local: set DEPLOYER_PRIVATE_KEY and ORACLE_PRIVATE_KEY
+# Contract addresses are pre-filled in .env.example (mainnet)
 
 # 1. Verify everything
 pnpm verify
 
-# 2. Deploy contracts (or use existing mainnet addresses in .env.example)
+# 2. Deploy contracts (or skip — mainnet addresses already in .env.example)
 pnpm deploy:mainnet  # requires OG tokens in deployer wallet
 
 # 3. Run the oracle in one terminal
@@ -112,8 +109,6 @@ pnpm dev:tavern   # http://localhost:3001
 # 5. Market in another terminal
 pnpm dev:market   # http://localhost:3002
 ```
-
-Mainnet OG tokens can be obtained from a CEX and bridged.
 
 ## Repository layout
 
