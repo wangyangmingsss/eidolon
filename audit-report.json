@@ -1,0 +1,190 @@
+{
+  "auditDate": "2026-05-04",
+  "spec": "Doc U1 — Eidolon Upgrade Development Guide",
+  "submissionRisk": "amber",
+  "riskRationale": "All core skeleton files present, contracts compile and 12/12 tests pass, mainnet addresses verified, SDK fully implemented (0 TODOs, 0 stubs). Oracle package is missing 3 of 4 expected source files (watcher.ts, reencrypt.ts, settle.ts). This single gap warrants amber rather than green.",
+  "categories": {
+    "A_RepoSkeleton": {
+      "status": "pass",
+      "details": {
+        "package.json": "EXISTS",
+        "pnpm-workspace.yaml": "EXISTS",
+        ".env.example": "EXISTS",
+        "LICENSE": "EXISTS",
+        "README.md": "EXISTS",
+        "docs/00_PROJECT_OVERVIEW.md": "EXISTS",
+        "docs/01_SETUP_AND_VERIFY.md": "EXISTS",
+        "docs/02_CONTRACTS.md": "EXISTS",
+        "docs/03_SOUL_SDK.md": "EXISTS",
+        "docs/04_WORLD_A_TAVERN.md": "EXISTS",
+        "docs/05_WORLD_B_MARKET.md": "EXISTS",
+        "docs/06_DEMO_VIDEO.md": "EXISTS",
+        "docs/07_SUBMISSION.md": "EXISTS",
+        "packages/contracts/foundry.toml": "EXISTS",
+        "packages/contracts/src/Counter.sol": "EXISTS",
+        "packages/contracts/src/Marketplace.sol": "EXISTS",
+        "packages/contracts/src/OracleRegistry.sol": "EXISTS",
+        "packages/contracts/src/SoulNFT.sol": "EXISTS",
+        "packages/sdk/package.json": "EXISTS",
+        "packages/sdk/src/index.ts": "EXISTS",
+        "packages/sdk/src/types.ts": "EXISTS",
+        "packages/sdk/src/soul.ts": "EXISTS",
+        "packages/sdk/src/crypto.ts": "EXISTS",
+        "packages/sdk/src/storage.ts": "EXISTS",
+        "packages/sdk/src/inference.ts": "EXISTS",
+        "packages/sdk/src/imprint.ts": "EXISTS",
+        "packages/sdk/src/prompts.ts": "EXISTS",
+        "packages/sdk/src/chain.ts": "EXISTS",
+        "packages/sdk/src/constants.ts": "EXISTS",
+        "packages/oracle/src/index.ts": "EXISTS",
+        "packages/oracle/src/watcher.ts": "MISSING",
+        "packages/oracle/src/reencrypt.ts": "MISSING",
+        "packages/oracle/src/settle.ts": "MISSING",
+        "packages/world-tavern": "EXISTS",
+        "packages/world-market": "EXISTS",
+        "scripts/verify.ts": "EXISTS"
+      },
+      "missing": [
+        "packages/oracle/src/watcher.ts",
+        "packages/oracle/src/reencrypt.ts",
+        "packages/oracle/src/settle.ts"
+      ]
+    },
+    "B_Contracts": {
+      "status": "pass",
+      "forgeBuild": "success — no compilation errors",
+      "forgeTest": {
+        "result": "12 passed, 0 failed, 0 skipped",
+        "suites": [
+          { "file": "test/Counter.t.sol", "passed": 2, "failed": 0 },
+          { "file": "test/DriftFlow.t.sol", "passed": 1, "failed": 0 },
+          { "file": "test/Marketplace.t.sol", "passed": 2, "failed": 0 },
+          { "file": "test/SoulNFT.t.sol", "passed": 7, "failed": 0 }
+        ]
+      }
+    },
+    "C_SDK": {
+      "status": "pass",
+      "files": {
+        "addresses.ts": { "lines": 47, "todos": 0, "stubs": 0 },
+        "chain.ts":     { "lines": 137, "todos": 0, "stubs": 0 },
+        "constants.ts": { "lines": 27, "todos": 0, "stubs": 0 },
+        "crypto.ts":    { "lines": 21, "todos": 0, "stubs": 0 },
+        "env.ts":       { "lines": 38, "todos": 0, "stubs": 0 },
+        "imprint.ts":   { "lines": 105, "todos": 0, "stubs": 0 },
+        "index.ts":     { "lines": 11, "todos": 0, "stubs": 0 },
+        "inference.ts": { "lines": 86, "todos": 0, "stubs": 0 },
+        "memory.ts":    { "lines": 26, "todos": 0, "stubs": 0 },
+        "prompts.ts":   { "lines": 116, "todos": 0, "stubs": 0 },
+        "soul.ts":      { "lines": 120, "todos": 0, "stubs": 0 },
+        "storage.ts":   { "lines": 92, "todos": 0, "stubs": 0 },
+        "types.ts":     { "lines": 75, "todos": 0, "stubs": 0 },
+        "verify.ts":    { "lines": 308, "todos": 0, "stubs": 0 }
+      },
+      "totalLines": 1209,
+      "totalTodos": 0,
+      "totalStubs": 0
+    },
+    "D_Worlds": {
+      "status": "pass",
+      "worldTavern": {
+        "pages": [
+          "app/page.tsx",
+          "app/tavern/page.tsx",
+          "app/end/page.tsx"
+        ],
+        "apiRoutes": [
+          "app/api/act/route.ts",
+          "app/api/mint/route.ts",
+          "app/api/soul/[tokenId]/route.ts"
+        ],
+        "components": [
+          "ChatLog.tsx",
+          "NPCPortrait.tsx",
+          "ParchmentCard.tsx",
+          "SoulPanel.tsx",
+          "TaskTracker.tsx",
+          "ThinkingDots.tsx"
+        ]
+      },
+      "worldMarket": {
+        "pages": [
+          "app/page.tsx",
+          "app/market/page.tsx"
+        ],
+        "apiRoutes": [
+          "app/api/act/route.ts",
+          "app/api/awaken/route.ts",
+          "app/api/buy/route.ts",
+          "app/api/list/route.ts",
+          "app/api/soul/[tokenId]/route.ts"
+        ],
+        "components": [
+          "AwakeningTypewriter.tsx",
+          "DriftAnimation.tsx",
+          "ListingsGrid.tsx",
+          "NeonChatLog.tsx",
+          "SoulPanel.tsx",
+          "TerminalCard.tsx"
+        ]
+      }
+    },
+    "E_Oracle": {
+      "status": "warn",
+      "detail": "Only src/index.ts exists. watcher.ts, reencrypt.ts, settle.ts are MISSING. Oracle logic may be consolidated into index.ts.",
+      "filesPresent": ["src/index.ts"],
+      "filesMissing": ["src/watcher.ts", "src/reencrypt.ts", "src/settle.ts"]
+    },
+    "F_OnChain": {
+      "status": "pass",
+      "addressFiles": {
+        "addresses.mainnet.json": "EXISTS",
+        "addresses.testnet.json": "EXISTS"
+      },
+      "verifyOutputFiles": {
+        "verify-output.json": "EXISTS (testnet)",
+        "verify-output.mainnet.json": "EXISTS (mainnet)"
+      },
+      "mainnetContracts": {
+        "OracleRegistry": {
+          "expected": "0x37b8BCf9A8200AbE88A37222E451D3F835d49d12",
+          "actual": "0x37b8BCf9A8200AbE88A37222E451D3F835d49d12",
+          "match": true
+        },
+        "SoulNFT": {
+          "expected": "0x8B2adf886aC76cf091E7Bb79f2a6E6BD66aC6D22",
+          "actual": "0x8B2adf886aC76cf091E7Bb79f2a6E6BD66aC6D22",
+          "match": true
+        },
+        "Marketplace": {
+          "expected": "0x24cFaCaF9FA7557a9228678Ee3E3EE427f0A8E58",
+          "actual": "0x24cFaCaF9FA7557a9228678Ee3E3EE427f0A8E58",
+          "match": true
+        }
+      },
+      "mainnetVerifyOutput": {
+        "contractsDeployed": true,
+        "oracleRegistryHasCode": true,
+        "soulNFTHasCode": true,
+        "marketplaceHasCode": true,
+        "walletBalance": "5.878364939978859615"
+      }
+    },
+    "H_README": {
+      "status": "pass",
+      "placeholders": "none found (no TODO/TBD/lorem ipsum/COMING SOON)",
+      "brokenLinks": "none — all internal links resolve, all external links are plausible URLs",
+      "notes": "Mentions 'hackathon' in badge, roadmap, and known-limitations sections — appropriate context, not a placeholder."
+    },
+    "J_Tooling": {
+      "status": "pass",
+      "versions": {
+        "node": "v20.20.2",
+        "pnpm": "10.33.2",
+        "forge": "1.6.0-v1.7.0",
+        "cast": "1.6.0-v1.7.0",
+        "jq": "1.7"
+      }
+    }
+  }
+}
