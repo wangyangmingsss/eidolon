@@ -1,0 +1,158 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" width="900" height="600">
+  <defs>
+    <marker id="arrow-cyan" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto" markerUnits="strokeWidth">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#00f0ff"/>
+    </marker>
+    <marker id="arrow-purple" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto" markerUnits="strokeWidth">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#8b5cf6"/>
+    </marker>
+    <marker id="arrow-pink" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto" markerUnits="strokeWidth">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#ff2a6d"/>
+    </marker>
+    <marker id="arrow-yellow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto" markerUnits="strokeWidth">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#fbbf24"/>
+    </marker>
+    <filter id="glow-cyan" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-color="#00f0ff" flood-opacity="0.3"/>
+      <feComposite in2="blur" operator="in"/>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="glow-pink" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-color="#ff2a6d" flood-opacity="0.3"/>
+      <feComposite in2="blur" operator="in"/>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="glow-purple" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-color="#8b5cf6" flood-opacity="0.3"/>
+      <feComposite in2="blur" operator="in"/>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- BACKGROUND -->
+  <rect width="900" height="600" fill="#0a0a0f" rx="0"/>
+
+  <!-- TITLE -->
+  <text x="450" y="35" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="22" font-weight="bold" fill="#ffffff" letter-spacing="2">EIDOLON ARCHITECTURE</text>
+  <line x1="300" y1="44" x2="600" y2="44" stroke="#8b5cf6" stroke-width="1.5" opacity="0.6"/>
+
+  <!-- TOP LAYER: WORLDS -->
+  <text x="450" y="72" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="11" fill="#ff2a6d" opacity="0.7" letter-spacing="3">FRONTEND WORLDS</text>
+
+  <!-- World A: Tavern -->
+  <rect x="80" y="82" width="320" height="68" rx="10" fill="#1a0a14" stroke="#ff2a6d" stroke-width="1.5" filter="url(#glow-pink)"/>
+  <text x="240" y="106" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="14" font-weight="bold" fill="#ff2a6d">World A: Tavern</text>
+  <text x="240" y="122" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="10" fill="#ff8fac">Medieval Theme</text>
+  <text x="240" y="140" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="10" fill="#888">Next.js · port 3001</text>
+
+  <!-- World B: Market -->
+  <rect x="500" y="82" width="320" height="68" rx="10" fill="#1a0a14" stroke="#ff2a6d" stroke-width="1.5" filter="url(#glow-pink)"/>
+  <text x="660" y="106" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="14" font-weight="bold" fill="#ff2a6d">World B: Market</text>
+  <text x="660" y="122" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="10" fill="#ff8fac">Cyberpunk Theme</text>
+  <text x="660" y="140" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="10" fill="#888">Next.js · port 3002</text>
+
+  <!-- MIDDLE LAYER: SOUL SDK -->
+  <text x="450" y="188" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="11" fill="#8b5cf6" opacity="0.7" letter-spacing="3">SOUL SDK</text>
+
+  <rect x="60" y="196" width="780" height="105" rx="12" fill="#0f0a1a" stroke="#8b5cf6" stroke-width="1.5" filter="url(#glow-purple)"/>
+
+  <!-- Core functions row -->
+  <text x="90" y="220" font-family="'Segoe UI', Arial, sans-serif" font-size="11" fill="#c4b5fd" font-weight="bold">Core:</text>
+  <rect x="130" y="207" width="72" height="22" rx="5" fill="#1e1538" stroke="#8b5cf6" stroke-width="0.8"/>
+  <text x="166" y="222" text-anchor="middle" font-family="monospace" font-size="10" fill="#c4b5fd">summon</text>
+  <rect x="210" y="207" width="52" height="22" rx="5" fill="#1e1538" stroke="#8b5cf6" stroke-width="0.8"/>
+  <text x="236" y="222" text-anchor="middle" font-family="monospace" font-size="10" fill="#c4b5fd">act</text>
+  <rect x="270" y="207" width="68" height="22" rx="5" fill="#1e1538" stroke="#8b5cf6" stroke-width="0.8"/>
+  <text x="304" y="222" text-anchor="middle" font-family="monospace" font-size="10" fill="#c4b5fd">imprint</text>
+  <rect x="346" y="207" width="55" height="22" rx="5" fill="#1e1538" stroke="#8b5cf6" stroke-width="0.8"/>
+  <text x="373" y="222" text-anchor="middle" font-family="monospace" font-size="10" fill="#c4b5fd">drift</text>
+  <rect x="409" y="207" width="72" height="22" rx="5" fill="#1e1538" stroke="#8b5cf6" stroke-width="0.8"/>
+  <text x="445" y="222" text-anchor="middle" font-family="monospace" font-size="10" fill="#c4b5fd">awaken</text>
+
+  <!-- Sub-modules row -->
+  <text x="90" y="260" font-family="'Segoe UI', Arial, sans-serif" font-size="11" fill="#a78bfa" font-weight="bold">Modules:</text>
+  <rect x="160" y="246" width="130" height="24" rx="6" fill="#1e1538" stroke="#6d46c9" stroke-width="0.8"/>
+  <text x="225" y="262" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="10" fill="#a78bfa">crypto (ECIES)</text>
+  <rect x="300" y="246" width="90" height="24" rx="6" fill="#1e1538" stroke="#6d46c9" stroke-width="0.8"/>
+  <text x="345" y="262" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="10" fill="#a78bfa">prompts</text>
+  <rect x="400" y="246" width="90" height="24" rx="6" fill="#1e1538" stroke="#6d46c9" stroke-width="0.8"/>
+  <text x="445" y="262" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="10" fill="#a78bfa">memory</text>
+  <rect x="500" y="246" width="100" height="24" rx="6" fill="#1e1538" stroke="#6d46c9" stroke-width="0.8"/>
+  <text x="550" y="262" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="10" fill="#a78bfa">inference</text>
+
+  <!-- BOTTOM LAYER: 0G INFRASTRUCTURE -->
+  <text x="450" y="340" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="11" fill="#00f0ff" opacity="0.7" letter-spacing="3">0G INFRASTRUCTURE</text>
+
+  <!-- Row 1: Chain, Storage Log, Storage KV -->
+  <rect x="40" y="352" width="250" height="70" rx="10" fill="#060d14" stroke="#00f0ff" stroke-width="1.5" filter="url(#glow-cyan)"/>
+  <text x="165" y="375" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="13" font-weight="bold" fill="#00f0ff">0G Chain (EVM)</text>
+  <text x="165" y="392" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="9" fill="#66d9ef">ERC-7857 · Marketplace</text>
+  <text x="165" y="406" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="9" fill="#66d9ef">OracleRegistry</text>
+
+  <rect x="325" y="352" width="250" height="70" rx="10" fill="#060d14" stroke="#00f0ff" stroke-width="1.5" filter="url(#glow-cyan)"/>
+  <text x="450" y="375" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="13" font-weight="bold" fill="#00f0ff">0G Storage Log</text>
+  <text x="450" y="395" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="9" fill="#66d9ef">Encrypted Soul blobs</text>
+
+  <rect x="610" y="352" width="250" height="70" rx="10" fill="#060d14" stroke="#00f0ff" stroke-width="1.5" filter="url(#glow-cyan)"/>
+  <text x="735" y="375" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="13" font-weight="bold" fill="#00f0ff">0G Storage KV</text>
+  <text x="735" y="395" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="9" fill="#66d9ef">Memory index</text>
+
+  <!-- Row 2: Compute, Oracle -->
+  <rect x="120" y="442" width="280" height="65" rx="10" fill="#060d14" stroke="#00f0ff" stroke-width="1.5" filter="url(#glow-cyan)"/>
+  <text x="260" y="466" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="13" font-weight="bold" fill="#00f0ff">0G Compute (TEE)</text>
+  <text x="260" y="486" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="9" fill="#66d9ef">Inference execution</text>
+
+  <rect x="500" y="442" width="280" height="65" rx="10" fill="#060d14" stroke="#00f0ff" stroke-width="1.5" filter="url(#glow-cyan)"/>
+  <text x="640" y="466" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="13" font-weight="bold" fill="#fbbf24">Oracle Service</text>
+  <text x="640" y="486" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="9" fill="#fde68a">Drift re-encryption</text>
+
+  <!-- DATA FLOW ARROWS -->
+
+  <!-- World A → SDK (API calls) -->
+  <line x1="240" y1="150" x2="240" y2="194" stroke="#ff2a6d" stroke-width="1.5" marker-end="url(#arrow-pink)" opacity="0.8"/>
+  <text x="252" y="176" font-family="'Segoe UI', Arial, sans-serif" font-size="8" fill="#ff8fac">API calls</text>
+
+  <!-- World B → SDK (API calls) -->
+  <line x1="660" y1="150" x2="660" y2="194" stroke="#ff2a6d" stroke-width="1.5" marker-end="url(#arrow-pink)" opacity="0.8"/>
+  <text x="672" y="176" font-family="'Segoe UI', Arial, sans-serif" font-size="8" fill="#ff8fac">API calls</text>
+
+  <!-- SDK → 0G Chain (mint, update, drift) -->
+  <line x1="165" y1="301" x2="165" y2="350" stroke="#8b5cf6" stroke-width="1.5" marker-end="url(#arrow-purple)" opacity="0.8"/>
+  <text x="108" y="330" font-family="'Segoe UI', Arial, sans-serif" font-size="8" fill="#c4b5fd">mint, update, drift</text>
+
+  <!-- SDK → 0G Storage Log (upload/download blobs) -->
+  <line x1="400" y1="301" x2="430" y2="350" stroke="#8b5cf6" stroke-width="1.5" marker-end="url(#arrow-purple)" opacity="0.8"/>
+  <text x="390" y="330" font-family="'Segoe UI', Arial, sans-serif" font-size="8" fill="#c4b5fd">upload/download blobs</text>
+
+  <!-- SDK → 0G Storage KV (implied via storage) -->
+  <line x1="620" y1="301" x2="700" y2="350" stroke="#8b5cf6" stroke-width="1.5" marker-end="url(#arrow-purple)" opacity="0.8"/>
+
+  <!-- SDK → 0G Compute TEE (inference) -->
+  <line x1="260" y1="301" x2="260" y2="440" stroke="#8b5cf6" stroke-width="1.5" marker-end="url(#arrow-purple)" stroke-dasharray="5,3" opacity="0.7"/>
+  <text x="268" y="380" font-family="'Segoe UI', Arial, sans-serif" font-size="8" fill="#c4b5fd">TEE inference</text>
+
+  <!-- Oracle → 0G Chain (completeDrift) -->
+  <line x1="560" y1="470" x2="290" y2="410" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#arrow-yellow)" opacity="0.8"/>
+  <text x="390" y="435" font-family="'Segoe UI', Arial, sans-serif" font-size="8" fill="#fde68a">completeDrift</text>
+
+  <!-- Oracle → 0G Storage (re-upload re-encrypted blob) -->
+  <line x1="640" y1="442" x2="530" y2="424" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#arrow-yellow)" opacity="0.8"/>
+  <text x="560" y="426" font-family="'Segoe UI', Arial, sans-serif" font-size="8" fill="#fde68a">re-encrypted blob</text>
+
+  <!-- Legend -->
+  <rect x="30" y="530" width="840" height="50" rx="8" fill="#0a0a0f" stroke="#222" stroke-width="0.8"/>
+  <line x1="50" y1="556" x2="80" y2="556" stroke="#ff2a6d" stroke-width="2"/>
+  <text x="86" y="560" font-family="'Segoe UI', Arial, sans-serif" font-size="9" fill="#888">Worlds</text>
+  <line x1="150" y1="556" x2="180" y2="556" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="186" y="560" font-family="'Segoe UI', Arial, sans-serif" font-size="9" fill="#888">SDK</text>
+  <line x1="230" y1="556" x2="260" y2="556" stroke="#00f0ff" stroke-width="2"/>
+  <text x="266" y="560" font-family="'Segoe UI', Arial, sans-serif" font-size="9" fill="#888">0G Infra</text>
+  <line x1="340" y1="556" x2="370" y2="556" stroke="#fbbf24" stroke-width="2"/>
+  <text x="376" y="560" font-family="'Segoe UI', Arial, sans-serif" font-size="9" fill="#888">Oracle</text>
+  <line x1="440" y1="556" x2="470" y2="556" stroke="#8b5cf6" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="476" y="560" font-family="'Segoe UI', Arial, sans-serif" font-size="9" fill="#888">Async flow</text>
+
+</svg>
