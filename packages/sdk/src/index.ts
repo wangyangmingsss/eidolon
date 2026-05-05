@@ -9,3 +9,14 @@ export { addresses } from './addresses.js';
 export { OG_ENDPOINTS, getEndpoints } from './constants.js';
 export type { OGNetwork } from './constants.js';
 export { env } from './env.js';
+export {
+  createMemoryProvider,
+  StorageMemoryProvider,
+  PersistentMemoryProvider,
+} from './memory/index.js';
+export type {
+  IMemoryProvider,
+  Memory as ProviderMemory,
+  MemoryRef,
+  MemoryProviderConfig,
+} from './memory/index.js';

@@ -4,7 +4,7 @@
 
 ### iNFT souls that drift between worlds
 
-[![0G Mainnet](https://img.shields.io/badge/0G-Mainnet-00f0ff)](https://chainscan.0g.ai)
+[![0G Mainnet](https://img.shields.io/badge/0G-Mainnet-00f0ff)](https://chainscan.0g.ai/address/0xa300aF5F0E20d974F20E55E71BB4229aE0A404be)
 [![License: MIT](https://img.shields.io/badge/License-MIT-c2410c)](LICENSE)
 [![Hackathon](https://img.shields.io/badge/0G_APAC_Hackathon-2026-ff2a6d)](https://www.hackquest.io/hackathons/0G-APAC-Hackathon)
 
@@ -63,22 +63,37 @@ The demo's magic moment: a Soul trained as a wary trader in the tavern is sold t
 | **0G Storage KV** | Memory index for sub-second retrieval | `packages/sdk/src/storage.ts` |
 | **0G Compute (TEE)** | Every Soul thought/action (`buildActPrompt`, `buildAwakeningPrompt`) | `packages/sdk/src/inference.ts` |
 | **ERC-7857 / iNFT** | Native implementation, oracle-mediated transfer | `packages/contracts/src/SoulNFT.sol` |
-| **Persistent Memory** | Memory layer (Storage-backed today; ready to swap to Persistent Memory module on launch) | `packages/sdk/src/memory.ts` |
+| **Persistent Memory** | Memory layer (Storage-backed today; ready to swap to Persistent Memory module on launch) | `packages/sdk/src/memory/` |
+| **Soul Royalty** | EIP-2981-style royalty for original fine-tuner on every secondary drift | `packages/contracts/src/SoulNFT.sol`, `Marketplace.sol` |
 
 ## On-chain artifacts (0G Mainnet — Chain ID 16661)
 
+### V2 contracts (with Soul Royalty)
+
 | Contract | Mainnet Address | Explorer |
 |---|---|---|
-| SoulNFT (ERC-7857) | `0x8B2adf886aC76cf091E7Bb79f2a6E6BD66aC6D22` | [view](https://chainscan.0g.ai/address/0x8B2adf886aC76cf091E7Bb79f2a6E6BD66aC6D22) |
-| Marketplace | `0x24cFaCaF9FA7557a9228678Ee3E3EE427f0A8E58` | [view](https://chainscan.0g.ai/address/0x24cFaCaF9FA7557a9228678Ee3E3EE427f0A8E58) |
-| OracleRegistry | `0x37b8BCf9A8200AbE88A37222E451D3F835d49d12` | [view](https://chainscan.0g.ai/address/0x37b8BCf9A8200AbE88A37222E451D3F835d49d12) |
+| SoulNFT (ERC-7857) | `0xa300aF5F0E20d974F20E55E71BB4229aE0A404be` | [view](https://chainscan.0g.ai/address/0xa300aF5F0E20d974F20E55E71BB4229aE0A404be) |
+| Marketplace | `0xC084835B0e3cd8B344Fa5Feb6429960EBbC830Ac` | [view](https://chainscan.0g.ai/address/0xC084835B0e3cd8B344Fa5Feb6429960EBbC830Ac) |
+| OracleRegistry | `0x3cf95f18E9D49Dd88E69872D5C24e75a982e93FC` | [view](https://chainscan.0g.ai/address/0x3cf95f18E9D49Dd88E69872D5C24e75a982e93FC) |
 
 **Deployer:** `0x762bC96708935dDbFc2d2fF0B32FCe98E23ec684`
 **Oracle:** `0x93f6720187F15E8BFf6068B5E2060198411cAf92`
 
-Deploy OracleRegistry tx: [`0x04c5909e...`](https://chainscan.0g.ai/tx/0x04c5909e15b2bbf5f4a1ef1434550540a3222d20462ff54915d75466f5c3fc42)
-Deploy SoulNFT tx: [`0x85f7282c...`](https://chainscan.0g.ai/tx/0x85f7282ce052661b1770ce79549fa4e906887dd9187ba21e64448d15ed9cdc35)
-Deploy Marketplace tx: [`0xa15b7188...`](https://chainscan.0g.ai/tx/0xa15b7188a0d283b646bb2ee5e96f5e96f3d3c1e63d2aeb69b90df65a4681a1e6)
+Deploy OracleRegistry tx: [`0x96791698...`](https://chainscan.0g.ai/tx/0x96791698007af7e8b2f3fdad63afed00685182be84fcbe091e48dc56697f5cdd)
+Deploy SoulNFT tx: [`0x7b9f8486...`](https://chainscan.0g.ai/tx/0x7b9f848620f471423282c6048c97936a51e9f0e707572af554ea9bf6c0b19949)
+Deploy Marketplace tx: [`0xd69ec968...`](https://chainscan.0g.ai/tx/0xd69ec9689c3bef493affe62355e14d655ea95ec5a234c28d10f54c8c8d5da9df)
+Register Oracle tx: [`0x92bbfa9d...`](https://chainscan.0g.ai/tx/0x92bbfa9d9b76cadbc0076c617e1d4df8ddb46b466a3f5b26c101cfc6793671ab)
+
+<details>
+<summary>V1 contracts (archived, pre-royalty)</summary>
+
+| Contract | Mainnet Address | Explorer |
+|---|---|---|
+| SoulNFT | `0x8B2adf886aC76cf091E7Bb79f2a6E6BD66aC6D22` | [view](https://chainscan.0g.ai/address/0x8B2adf886aC76cf091E7Bb79f2a6E6BD66aC6D22) |
+| Marketplace | `0x24cFaCaF9FA7557a9228678Ee3E3EE427f0A8E58` | [view](https://chainscan.0g.ai/address/0x24cFaCaF9FA7557a9228678Ee3E3EE427f0A8E58) |
+| OracleRegistry | `0x37b8BCf9A8200AbE88A37222E451D3F835d49d12` | [view](https://chainscan.0g.ai/address/0x37b8BCf9A8200AbE88A37222E451D3F835d49d12) |
+
+</details>
 
 ## Try it yourself
 
@@ -147,7 +162,9 @@ Full architecture and design rationale: [`docs/00_PROJECT_OVERVIEW.md`](./docs/0
 - Both Worlds built and playable (tavern: 5 NPCs, 3 tasks / market: 3 NPCs, 2 tasks + awakening)
 - Awakening typewriter effect with past-life monologue
 - Personality vector evolves across encounters (16-dimensional, visible in Soul Panel)
-- All three contracts deployed and verified on 0G mainnet
+- **Soul Royalty:** original fine-tuner receives 2.5% on every secondary drift (EIP-2981-style, configurable per-Soul, capped at 10%)
+- **Memory Provider Abstraction:** `IMemoryProvider` interface with `StorageMemoryProvider` (live) and `PersistentMemoryProvider` (ready for 0G module launch)
+- All three contracts deployed and verified on 0G mainnet (V2 with royalty support)
 
 🛠️ **Roadmap (post-hackathon):**
 - Multi-sig oracle quorum (currently single trusted oracle)

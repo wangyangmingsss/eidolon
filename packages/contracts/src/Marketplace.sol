@@ -33,6 +33,7 @@ contract Marketplace {
     event Cancelled(uint256 indexed tokenId);
     event Bought(uint256 indexed tokenId, address indexed buyer, uint256 price);
     event Settled(uint256 indexed tokenId, address indexed seller, uint256 amount);
+    event RoyaltyPaid(uint256 indexed tokenId, address indexed recipient, uint256 amount);
 
     error NotOwner();
     error AlreadyListed();
@@ -85,7 +86,7 @@ contract Marketplace {
 
     // ─── Settle after oracle completes drift ─────────────────────────────
 
-    /// @notice Anyone can call once oracle has completed the drift. Pays seller, removes listing.
+    /// @notice Anyone can call once oracle has completed the drift. Pays seller (minus royalty), removes listing.
     function settle(uint256 tokenId) external {
         Escrow memory e = escrows[tokenId];
         if (e.amount == 0) revert NoEscrow();
@@ -98,10 +99,21 @@ contract Marketplace {
         delete listings[tokenId];
         delete escrows[tokenId];
 
-        (bool sent, ) = payable(l.seller).call{value: e.amount}("");
+        // Compute royalty
+        (address fineTuner, uint96 royaltyBps) = souls.getRoyaltyInfo(tokenId);
+        uint256 royaltyAmount = 0;
+        if (fineTuner != address(0) && fineTuner != l.seller && royaltyBps > 0) {
+            royaltyAmount = (uint256(e.amount) * royaltyBps) / 10000;
+            (bool royaltySent, ) = payable(fineTuner).call{value: royaltyAmount}("");
+            require(royaltySent, "royalty transfer failed");
+            emit RoyaltyPaid(tokenId, fineTuner, royaltyAmount);
+        }
+
+        uint256 sellerAmount = uint256(e.amount) - royaltyAmount;
+        (bool sent, ) = payable(l.seller).call{value: sellerAmount}("");
         require(sent, "transfer failed");
 
-        emit Settled(tokenId, l.seller, e.amount);
+        emit Settled(tokenId, l.seller, sellerAmount);
     }
 
     /// @notice Buyer refund if drift is stuck (placeholder for MVP).

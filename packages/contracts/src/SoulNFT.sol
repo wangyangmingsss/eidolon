@@ -32,6 +32,17 @@ contract SoulNFT is IERC7857, ERC721, Ownable {
     // tokenId -> URI hint for retrieval (e.g., indexer URL + path)
     mapping(uint256 => string) private _encryptedURI;
 
+    // ─── Royalty ─────────────────────────────────────────────────────────
+    struct RoyaltyInfo {
+        address fineTuner;
+        uint96 royaltyBps;
+    }
+    mapping(uint256 => RoyaltyInfo) public royaltyInfo;
+
+    event RoyaltySet(uint256 indexed tokenId, address indexed fineTuner, uint96 bps);
+
+    error RoyaltyTooHigh();
+
     // Pending drift state (after requestDrift, before completeDrift)
     struct Pending {
         address to;
@@ -71,17 +82,43 @@ contract SoulNFT is IERC7857, ERC721, Ownable {
     // ─── Mint ────────────────────────────────────────────────────────────
 
     /// @inheritdoc IERC7857
+    /// @dev Defaults to 250 bps (2.5%) royalty for the minter.
     function mint(
         address to,
         bytes32 metadataRoot,
         string calldata encryptedURI
     ) external override returns (uint256 tokenId) {
+        return this.mint(to, metadataRoot, encryptedURI, 250);
+    }
+
+    /// @notice Mint with explicit royalty basis points.
+    function mint(
+        address to,
+        bytes32 metadataRoot,
+        string calldata encryptedURI,
+        uint96 royaltyBps
+    ) external returns (uint256 tokenId) {
         if (metadataRoot == bytes32(0)) revert InvalidRoot();
         tokenId = ++_nextTokenId;
         _safeMint(to, tokenId);
         _metadataRoot[tokenId] = metadataRoot;
         _encryptedURI[tokenId] = encryptedURI;
+        _setRoyalty(tokenId, to, royaltyBps);
         emit SoulMinted(tokenId, to, metadataRoot);
+    }
+
+    // ─── Royalty internals ──────────────────────────────────────────────
+
+    function _setRoyalty(uint256 tokenId, address fineTuner, uint96 bps) internal {
+        if (bps > 1000) revert RoyaltyTooHigh();
+        royaltyInfo[tokenId] = RoyaltyInfo({fineTuner: fineTuner, royaltyBps: bps});
+        emit RoyaltySet(tokenId, fineTuner, bps);
+    }
+
+    /// @notice Returns the royalty info for a Soul.
+    function getRoyaltyInfo(uint256 tokenId) external view returns (address fineTuner, uint96 royaltyBps) {
+        RoyaltyInfo memory info = royaltyInfo[tokenId];
+        return (info.fineTuner, info.royaltyBps);
     }
 
     // ─── Update (after gameplay) ─────────────────────────────────────────

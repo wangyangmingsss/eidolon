@@ -4,9 +4,9 @@
   "blockNumber": 32321578,
   "walletBalance": "5.878364939978859615",
   "contracts": {
-    "OracleRegistry": "0x37b8BCf9A8200AbE88A37222E451D3F835d49d12",
-    "SoulNFT": "0x8B2adf886aC76cf091E7Bb79f2a6E6BD66aC6D22",
-    "Marketplace": "0x24cFaCaF9FA7557a9228678Ee3E3EE427f0A8E58",
+    "OracleRegistry": "0x3cf95f18E9D49Dd88E69872D5C24e75a982e93FC",
+    "SoulNFT": "0xa300aF5F0E20d974F20E55E71BB4229aE0A404be",
+    "Marketplace": "0xC084835B0e3cd8B344Fa5Feb6429960EBbC830Ac",
     "Oracle": "0x93f6720187F15E8BFf6068B5E2060198411cAf92"
   },
   "contractsDeployed": true,
@@ -20,5 +20,8 @@
   "computeModel": null,
   "computeSampleResponse": "skipped",
   "teeSignatureValid": false,
+  "deployVersion": "v2-with-royalty",
+  "royaltySupport": true,
+  "memoryProviderAbstraction": true,
   "timestamp": "2026-05-05T00:00:00.000Z"
 }
