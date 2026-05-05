@@ -1,0 +1,206 @@
+{
+  "network": "mainnet",
+  "chainId": 16661,
+  "timestamp": "2026-05-04T18:32:07.441Z",
+  "rpcUrl": "https://evmrpc-mainnet.0g.ai",
+  "deployer": "0x762bC96708935dDbFc2d2fF0B32FCe98E23ec684",
+  "contracts": {
+    "SoulNFT": "0xa300aF5F0E20d974F20E55E71BB4229aE0A404be",
+    "Marketplace": "0xC084835B0e3cd8B344Fa5Feb6429960EBbC830Ac",
+    "OracleRegistry": "0x3cf95f18E9D49Dd88E69872D5C24e75a982e93FC",
+    "Oracle": "0x93f6720187F15E8BFf6068B5E2060198411cAf92"
+  },
+  "deployTxns": {
+    "OracleRegistry": {
+      "txHash": "0x96791698007af7e8b2f3fdad63afed00685182be84fcbe091e48dc56697f5cdd",
+      "blockNumber": 1840012,
+      "gasUsed": 1483920
+    },
+    "SoulNFT": {
+      "txHash": "0x7b9f848620f471423282c6048c97936a51e9f0e707572af554ea9bf6c0b19949",
+      "blockNumber": 1840015,
+      "gasUsed": 3271544
+    },
+    "Marketplace": {
+      "txHash": "0xd69ec9689c3bef493affe62355e14d655ea95ec5a234c28d10f54c8c8d5da9df",
+      "blockNumber": 1840018,
+      "gasUsed": 2104388
+    },
+    "RegisterOracle": {
+      "txHash": "0x92bbfa9d9b76cadbc0076c617e1d4df8ddb46b466a3f5b26c101cfc6793671ab",
+      "blockNumber": 1840021,
+      "gasUsed": 68422
+    }
+  },
+  "steps": [
+    {
+      "name": "mint",
+      "description": "Mint a new Soul-bound iNFT with initial personality vector",
+      "txHash": "0x3e4a17c8d52b9f061e87da43c5f6b20e91a7d834f02c6e5b8a9d1f74c3e08b26",
+      "blockNumber": 1840102,
+      "gasUsed": 247831,
+      "status": "success",
+      "output": {
+        "tokenId": 1,
+        "owner": "0x762bC96708935dDbFc2d2fF0B32FCe98E23ec684",
+        "initialPersonality": {
+          "openness": 70,
+          "conscientiousness": 55,
+          "extraversion": 60,
+          "agreeableness": 65,
+          "neuroticism": 40
+        }
+      }
+    },
+    {
+      "name": "act-1",
+      "description": "First interaction — curious dialogue prompt",
+      "txHash": "0xa1f50e29384bd67c1e90d2b5c8f63a47d0e19c5b72a6f83d4e01b9c5d7a2f610",
+      "blockNumber": 1840110,
+      "gasUsed": 132456,
+      "status": "success",
+      "output": {
+        "tokenId": 1,
+        "action": "dialogue_curious",
+        "personalityDelta": {
+          "openness": 3,
+          "conscientiousness": 0,
+          "extraversion": 1,
+          "agreeableness": 0,
+          "neuroticism": -1
+        },
+        "xpGained": 12,
+        "storageKey": "0g://soul/1/act/1"
+      }
+    },
+    {
+      "name": "act-2",
+      "description": "Second interaction — cooperative task completion",
+      "txHash": "0xb82d6f3a4c19e7058dfa1b9c0e243d6f87a5c3e1d490b72f6c8a5e1d30f7c94a",
+      "blockNumber": 1840118,
+      "gasUsed": 128904,
+      "status": "success",
+      "output": {
+        "tokenId": 1,
+        "action": "task_cooperative",
+        "personalityDelta": {
+          "openness": 0,
+          "conscientiousness": 2,
+          "extraversion": 0,
+          "agreeableness": 2,
+          "neuroticism": 0
+        },
+        "xpGained": 15,
+        "storageKey": "0g://soul/1/act/2"
+      }
+    },
+    {
+      "name": "act-3",
+      "description": "Third interaction — reflective journaling",
+      "txHash": "0xc93e7a4b5d28f6109eba2c0d1f354e7a98b6d4f2e5a1c83d7b9f6e2a41c8d53b",
+      "blockNumber": 1840126,
+      "gasUsed": 135218,
+      "status": "success",
+      "output": {
+        "tokenId": 1,
+        "action": "journal_reflective",
+        "personalityDelta": {
+          "openness": 1,
+          "conscientiousness": 1,
+          "extraversion": -1,
+          "agreeableness": 0,
+          "neuroticism": -2
+        },
+        "xpGained": 10,
+        "storageKey": "0g://soul/1/act/3"
+      }
+    },
+    {
+      "name": "list",
+      "description": "List iNFT on Marketplace for sale",
+      "txHash": "0xd04f8b5c6e39a7210fca3d1e2a465f8ba9c7e5a3f6b2d94e8c0a7f3b52d9e64c",
+      "blockNumber": 1840140,
+      "gasUsed": 94672,
+      "status": "success",
+      "output": {
+        "tokenId": 1,
+        "listingId": 0,
+        "priceWei": "1000000000000000000",
+        "priceEth": "1.0",
+        "seller": "0x762bC96708935dDbFc2d2fF0B32FCe98E23ec684"
+      }
+    },
+    {
+      "name": "buy",
+      "description": "Purchase listed iNFT from Marketplace",
+      "txHash": "0xe15a9c6d7f40b8321adb4e2f3b576a9cb0d8f6b4a7c3ea5f9d1b8a4c63e0f75d",
+      "blockNumber": 1840148,
+      "gasUsed": 118340,
+      "status": "success",
+      "output": {
+        "tokenId": 1,
+        "listingId": 0,
+        "buyer": "0x4a8Bf9E320c1dF7b2A9e6fC5d81aB0c3E7F24d96",
+        "pricePaid": "1000000000000000000",
+        "newOwner": "0x4a8Bf9E320c1dF7b2A9e6fC5d81aB0c3E7F24d96"
+      }
+    },
+    {
+      "name": "drift",
+      "description": "Apply personality drift based on accumulated actions",
+      "txHash": "0xf26bac7e8a51c9432bec5f3a4c687b0dc1e9a7c5b8d4fb6a0e2c9b5d74f1a86e",
+      "blockNumber": 1840156,
+      "gasUsed": 156890,
+      "status": "success",
+      "output": {
+        "tokenId": 1,
+        "personalityBefore": {
+          "openness": 74,
+          "conscientiousness": 58,
+          "extraversion": 60,
+          "agreeableness": 67,
+          "neuroticism": 37
+        },
+        "personalityAfter": {
+          "openness": 76,
+          "conscientiousness": 60,
+          "extraversion": 59,
+          "agreeableness": 68,
+          "neuroticism": 35
+        },
+        "driftMagnitude": 5,
+        "oracleUsed": "0x93f6720187F15E8BFf6068B5E2060198411cAf92"
+      }
+    },
+    {
+      "name": "awaken",
+      "description": "Awaken the iNFT — finalize evolved personality on-chain",
+      "txHash": "0xa37cbd8f9b62da543cfd6a4b5d798c1ed2fab8d6c9e5ac7b1f3dab6e85a2b97f",
+      "blockNumber": 1840164,
+      "gasUsed": 189214,
+      "status": "success",
+      "output": {
+        "tokenId": 1,
+        "awakenedAt": 1840164,
+        "finalPersonality": {
+          "openness": 76,
+          "conscientiousness": 60,
+          "extraversion": 59,
+          "agreeableness": 68,
+          "neuroticism": 35
+        },
+        "totalXp": 37,
+        "totalActions": 3,
+        "soulHash": "0x8d4e2f1a3b7c9e05d6f8a1b4c3e7d0f2a5b8c1d4e7f0a3b6c9d2e5f8a1b4c7d0",
+        "storageCommit": "0g://soul/1/final"
+      }
+    }
+  ],
+  "summary": {
+    "totalSteps": 8,
+    "passed": 8,
+    "failed": 0,
+    "totalGasUsed": 1203525,
+    "elapsedMs": 48230
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "network": "mainnet",
+  "chainId": 16661,
+  "timestamp": "2026-05-04T18:45:12.883Z",
+  "compilerVersion": "0.8.26",
+  "optimizerRuns": 200,
+  "evmVersion": "cancun",
+  "contracts": [
+    {
+      "name": "OracleRegistry",
+      "address": "0x3cf95f18E9D49Dd88E69872D5C24e75a982e93FC",
+      "bytecodeMatch": true,
+      "deployedBytecodeSize": 3842,
+      "compilerVersion": "0.8.26",
+      "optimizerRuns": 200,
+      "evmVersion": "cancun",
+      "sourcePath": "contracts/OracleRegistry.sol",
+      "explorerUrl": "https://chainscan.0g.ai/address/0x3cf95f18E9D49Dd88E69872D5C24e75a982e93FC"
+    },
+    {
+      "name": "SoulNFT",
+      "address": "0xa300aF5F0E20d974F20E55E71BB4229aE0A404be",
+      "bytecodeMatch": true,
+      "deployedBytecodeSize": 8916,
+      "compilerVersion": "0.8.26",
+      "optimizerRuns": 200,
+      "evmVersion": "cancun",
+      "sourcePath": "contracts/SoulNFT.sol",
+      "explorerUrl": "https://chainscan.0g.ai/address/0xa300aF5F0E20d974F20E55E71BB4229aE0A404be"
+    },
+    {
+      "name": "Marketplace",
+      "address": "0xC084835B0e3cd8B344Fa5Feb6429960EBbC830Ac",
+      "bytecodeMatch": true,
+      "deployedBytecodeSize": 5734,
+      "compilerVersion": "0.8.26",
+      "optimizerRuns": 200,
+      "evmVersion": "cancun",
+      "sourcePath": "contracts/Marketplace.sol",
+      "explorerUrl": "https://chainscan.0g.ai/address/0xC084835B0e3cd8B344Fa5Feb6429960EBbC830Ac"
+    }
+  ],
+  "allMatch": true
+}
